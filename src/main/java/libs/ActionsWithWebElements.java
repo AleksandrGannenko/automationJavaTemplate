@@ -32,9 +32,9 @@ public class ActionsWithWebElements {
         }
     }
 
-    public void enterText(WebElement element) {
+    public void enterText(WebElement element, String text) {
         try {
-            element.click();
+            element.sendKeys(text);
         } catch (Exception e) {
             logger.error("Can not work with input");
             Assert.fail("Can not work with input");
