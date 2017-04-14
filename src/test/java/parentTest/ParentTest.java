@@ -15,6 +15,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import pages.HomePage;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class ParentTest {
     private String pathToScreenShot;
     private String browser;
 
-//    protected HomePage homePage;
+    protected HomePage homePage;
 
     public ParentTest(String browser) {
         this.browser = browser;
@@ -102,7 +103,7 @@ public class ParentTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-//        homePage = new HomePage(driver);
+        homePage = new HomePage(driver);
     }
 
     @After
@@ -139,7 +140,7 @@ public class ParentTest {
 
     private void initFirefox() {
         log.info("FireFox will be started");
-        File fileFF = new File("../drivers/geckodriver.exe");
+        File fileFF = new File("./drivers/geckodriver.exe");
         System.setProperty("webdriver.gecko.driver", fileFF.getAbsolutePath());
         driver = new FirefoxDriver();
         log.info(" FireFox is started");
@@ -147,7 +148,7 @@ public class ParentTest {
 
     private void initChrome() {
         log.info("Chrome will be started");
-        File fileFF = new File("../drivers/chromedriver.exe");
+        File fileFF = new File("./drivers/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", fileFF.getAbsolutePath());
         driver = new ChromeDriver();
         log.info(" Chrome is started");
@@ -155,7 +156,7 @@ public class ParentTest {
 
     private void initIEDriver() {
         log.info("IE will be started");
-        File file1 = new File("../drivers/IEDriverServer.exe");
+        File file1 = new File("./drivers/IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", file1.getAbsolutePath());
         DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
         capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
@@ -167,7 +168,7 @@ public class ParentTest {
 
     private void initOpera() {
         log.info("Opera will be started");
-        File fileOpera = new File("../drivers/operadriver.exe");
+        File fileOpera = new File("./drivers/operadriver.exe");
         System.setProperty("webdriver.chrome.driver", fileOpera.getAbsolutePath());
         driver = new ChromeDriver();
         log.info(" Opera is started");

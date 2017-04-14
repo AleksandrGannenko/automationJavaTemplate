@@ -26,7 +26,7 @@ public class ParentPage {
      * Method for open page with url
      * @param url
      */
-    public void open(String url){
+    public void openURL(String url){
         try {
             driver.get(url);
             logger.info("Page was opened with url " + url);

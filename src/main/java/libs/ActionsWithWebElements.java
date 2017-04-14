@@ -2,6 +2,7 @@ package libs;
 
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,6 +62,16 @@ public class ActionsWithWebElements {
             Assert.fail("Can not check text in element");
         }
         return checkTextInElement;
+    }
+
+    public void checkTextInElement(String locator, String expectedText) {
+        try {
+            String textFromElement = driver.findElement(By.xpath(locator)).getText();
+            Assert.assertThat("Text in element not matched", textFromElement, is(expectedText));
+        } catch (Exception e) {
+            logger.error("Can not work with element");
+            Assert.fail("Can not work with element");
+        }
     }
 
     public String getTextFromElement(WebElement element) {
